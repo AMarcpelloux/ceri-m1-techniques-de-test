@@ -10,7 +10,7 @@ jobs:
       - image: cimg/base:2023.06
     steps:
       - checkout
-      - run: maven/test
+      - run: src/Test/Java/fr.univavignon.pokedex.api
 
 workflows:
   maven_test:
