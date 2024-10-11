@@ -1,26 +1,32 @@
-package Java.fr.univavignon.pokedex.api;
+package fr.univavignon.pokedex.api;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.*;
-import org.mockito.Mockito;
+import org.mockito.Mock;
 
-import fr.univavignon.pokedex.api.IPokemonMetadataProvider;
-import fr.univavignon.pokedex.api.PokedexException;
 
 public class IPokemonMetadataProviderTest {
+	PokemonMetadataProvider PokMetPro;
+	@Mock
+	IPokemonMetadataProvider pokemonMetadataProvider;
 
+	@BeforeEach
+	void setup(){
+		PokMetPro = new PokemonMetadataProvider(pokemonMetadataProvider);
+	}
 	@Test
 	public void IPokemonMetadataProviderThrowsPokedexException() {
-		IPokemonMetadataProvider pokemonMetadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
+
 		try {
-			when(pokemonMetadataProvider.getPokemonMetadata(-1)).thenThrow(new PokedexException(""));
-			when(pokemonMetadataProvider.getPokemonMetadata(151)).thenThrow(new PokedexException(""));
+			doThrow(new PokedexException("")).when(pokemonMetadataProvider).getPokemonMetadata(-1);
+			doThrow(new PokedexException("")).when(pokemonMetadataProvider).getPokemonMetadata(151);
 			assertThrows(PokedexException.class,() -> {
-				pokemonMetadataProvider.getPokemonMetadata(-1);
+				PokMetPro.getPokemonMetadata(-1);
 		    });
 			assertThrows(PokedexException.class,() -> {
-				pokemonMetadataProvider.getPokemonMetadata(151);
+				PokMetPro.getPokemonMetadata(151);
 		    });
 			
 			
