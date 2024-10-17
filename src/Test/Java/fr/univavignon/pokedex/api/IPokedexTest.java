@@ -70,9 +70,8 @@ public class IPokedexTest {
     void ReturnSortedListPokemonOfPokedex(){
         ArrayList<Pokemon> pokemonList = new ArrayList<Pokemon>();
         pokemonList.add(P);
-        Comparator<Pokemon> Comparator = null;
-        when(pokedex.getPokemons(Comparator)).thenReturn(pokemonList);
-        assertEquals(pokemonList,pokedex.getPokemons(Comparator));
+        when(pokedex.getPokemons(PokemonComparators.NAME)).thenReturn(pokemonList);
+        assertEquals(pokemonList,pokedex.getPokemons(PokemonComparators.NAME));
 
     }
 
