@@ -10,7 +10,9 @@ jobs:
       - image: cimg/base:2023.06
     steps:
       - checkout
-      - run: mvn test
+      - run: maven test
+
+
 
 workflows:
   maven_test:
