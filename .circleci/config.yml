@@ -4,17 +4,39 @@ version: 2.1
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/jobs-steps/#jobs-overview & https://circleci.com/docs/configuration-reference/#jobs
+orbs:
+  codecov: codecov/codecov@4.0.1
+
 jobs:
-  maven_test:
+  build-and-test:
     docker:
-      - image: cimg/base:2023.06
+      - image: cimg/openjdk:11.0
     steps:
       - checkout
-      - run: maven test
+      - run:
+          name: Build
+          command: mvn -B -DskipTests clean package
+      - run:
+          name: Unit Tests
+          command: mvn test
+#tp5 javadoc
+      - run:
+          name: Checkstyle
+          command: mvn checkstyle:check
+#jacoco coverage
+      - run:
+          name: Generate Coverage Report
+          command: mvn jacoco:report
+      - codecov/upload:
+          file: target/site/jacoco/jacoco.xml
 
 
-
+#workflow maven build and test
 workflows:
-  maven_test:
+  version: 2
+  master-branch-workflow:
     jobs:
-     - maven_test
+      - build-and-test:
+          filters:
+            branches:
+              only: master
