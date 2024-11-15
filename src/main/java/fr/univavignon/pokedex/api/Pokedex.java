@@ -7,6 +7,7 @@ import java.util.List;
 public class Pokedex implements IPokedex{
     ArrayList<Pokemon> PokemonList;
     PokemonMetadataProvider pokemonMetadataProvider;
+    PokemonFactory pokemonFactory;
     int index;
     public Pokedex(){
         pokemonMetadataProvider = PokemonMetadataProvider.getProvider();
