@@ -31,6 +31,8 @@ public class  IPokemonMetadataProviderTest {
 
             assertThrows(PokedexException.class,() -> pmp.getPokemonMetadata(888));
             assertThrows(PokedexException.class,() -> pmp.getPokemonMetadata(-10));
+            assertThrows(PokedexException.class,() -> pmp.getPokemonMetadata(120));
+
         } catch (Exception e) {
 
         }
