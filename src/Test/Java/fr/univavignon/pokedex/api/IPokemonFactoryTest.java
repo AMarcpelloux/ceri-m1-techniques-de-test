@@ -28,4 +28,9 @@ public class IPokemonFactoryTest {
         assertEquals(p.getStamina(),pf.createPokemon(0,1,1,1,1).getStamina());
 
     }
+    @Test
+    void Testreturnnull(){
+        PokemonFactory pf = new PokemonFactory();
+        assertNull(pf.createPokemon(89999,0,0,0,0));
+    }
 }
