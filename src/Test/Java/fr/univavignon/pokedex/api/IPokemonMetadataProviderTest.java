@@ -29,6 +29,8 @@ public class  IPokemonMetadataProviderTest {
         try {
             when(PMP.getPokemonMetadata(888)).thenThrow(new PokedexException(""));
             assertThrows(PokedexException.class,() -> PMP.getPokemonMetadata(888));
+            when(PMP.getPokemonMetadata(-10)).thenThrow(new PokedexException(""));
+            assertThrows(PokedexException.class,() -> PMP.getPokemonMetadata(-10));
         } catch (Exception e) {
 
         }
