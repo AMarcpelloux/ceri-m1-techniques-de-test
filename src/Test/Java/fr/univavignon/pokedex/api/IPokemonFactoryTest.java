@@ -10,20 +10,22 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class IPokemonFactoryTest {
-    @Mock
-    PokemonFactory pokemonFactory;
 
-    @Test
-    void ReturnPokemonClassWhenPokemonFactoryCreatePokemon(){
-        when(pokemonFactory.createPokemon(1,1,1,1,1)).thenReturn(new Pokemon(1,"Jean",1,1,1,1,1,1,1,1));
-        assertEquals(Pokemon.class,pokemonFactory.createPokemon(1,1,1,1,1).getClass());
-    }
+
     @Test
     void ReturnValidPokemonWhenPokemonFactoryCreatePokemon(){
-        when(pokemonFactory.createPokemon(1,1,1,1,1)).thenReturn(new Pokemon(1,"Jean",1,1,1,1,1,1,1,1));
-        Pokemon P = new Pokemon(1,"Jean",1,1,1,1,1,1,1,1);
+        PokemonFactory pf = new PokemonFactory();
+        Pokemon p = pf.createPokemon(0,1,1,1,1);
+        assertEquals(p.getName(),pf.createPokemon(0,1,1,1,1).getName());
+        assertEquals(p.getAttack(),pf.createPokemon(0,1,1,1,1).getAttack());
+        assertEquals(p.getCp(),pf.createPokemon(0,1,1,1,1).getCp());
+        assertEquals(p.getCandy(),pf.createPokemon(0,1,1,1,1).getCandy());
+        assertEquals(p.getDust(),pf.createPokemon(0,1,1,1,1).getDust());
+        assertEquals(p.getHp(),pf.createPokemon(0,1,1,1,1).getHp());
+        assertEquals(p.getIv(),pf.createPokemon(0,1,1,1,1).getIv());
+        assertEquals(p.getIndex(),pf.createPokemon(0,1,1,1,1).getIndex());
+        assertEquals(p.getDefense(),pf.createPokemon(0,1,1,1,1).getDefense());
+        assertEquals(p.getStamina(),pf.createPokemon(0,1,1,1,1).getStamina());
 
-        assertEquals(P.getIndex(),pokemonFactory.createPokemon(1,1,1,1,1).getIndex());
-        assertEquals(P.getName(),pokemonFactory.createPokemon(1,1,1,1,1).getName());
     }
 }
