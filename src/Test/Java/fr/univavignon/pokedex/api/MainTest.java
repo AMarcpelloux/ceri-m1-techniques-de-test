@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.concurrent.ExecutionException;
 
@@ -61,5 +62,24 @@ public class MainTest {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
+    }
+    @Test
+    void comparatorTest(){
+        Comparator<Pokemon> order = PokemonComparators.NAME;
+        ArrayList<Pokemon> PokemonList = new ArrayList<>();
+        Pokemon p = new Pokemon(1,"bob",1,1,1,1,1,1,1,1);
+        PokemonList.add(p);
+        PokemonList.add(p);
+        PokemonList.add(p);
+        PokemonList.add(p);
+        PokemonList.add(p);
+        int j=0;
+        for(int i=1;i< PokemonList.size();i++) {
+            j = order.compare(PokemonList.get(i - 1), PokemonList.get(i));
+            if (j < 0) {
+                PokemonList.sort(order);
+            }
+        }
+        assertEquals(p.getIndex(),PokemonList.get(0).getIndex());
     }
 }
