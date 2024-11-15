@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.Comparator;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -60,9 +61,5 @@ public class MainTest {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-    }
-    @Test
-    void comparatorTest(){
-        PokemonComparators pc = pc.compare(p,p2);
     }
 }
