@@ -26,11 +26,11 @@ public class  IPokemonMetadataProviderTest {
     }
     @Test
     void IfPokemonMetadataOutOfBoundThrowException(){
+        PokemonMetadataProvider pmp = PokemonMetadataProvider.getProvider();
         try {
-            when(PMP.getPokemonMetadata(888)).thenThrow(new PokedexException(""));
-            assertThrows(PokedexException.class,() -> PMP.getPokemonMetadata(888));
-            when(PMP.getPokemonMetadata(-10)).thenThrow(new PokedexException(""));
-            assertThrows(PokedexException.class,() -> PMP.getPokemonMetadata(-10));
+
+            assertThrows(PokedexException.class,() -> pmp.getPokemonMetadata(888));
+            assertThrows(PokedexException.class,() -> pmp.getPokemonMetadata(-10));
         } catch (Exception e) {
 
         }
