@@ -51,4 +51,14 @@ public class MainTest {
             e.printStackTrace();
         }
     }
+    @Test
+    void FailTestaddmetadateAndGetmetadataOutOfBound(){
+        PokemonMetadataProvider pmp = PokemonMetadataProvider.getProvider();
+        assertEquals(1,PokemonMetadataProvider.addPokemonMetadata(new PokemonMetadata(999,"bob",1,1,1)));
+        try {
+            assertThrows(PokedexException.class,()-> pmp.getPokemonMetadata(999));
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

@@ -20,10 +20,11 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider{
             return pokemonMetadata[index];
         else throw new PokedexException("Pokemon dont exist");
     }
-    static public void addPokemonMetadata(PokemonMetadata PM){
+    static public int addPokemonMetadata(PokemonMetadata PM){
         if(PM.getIndex()<=150){
             pokemonMetadata[PM.getIndex()]=PM;
-
+            return 0;
         }
+        return 1;
     }
 }
