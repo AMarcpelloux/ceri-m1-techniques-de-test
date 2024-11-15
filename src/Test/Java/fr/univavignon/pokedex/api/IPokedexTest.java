@@ -1,6 +1,4 @@
 package fr.univavignon.pokedex.api;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -87,7 +86,7 @@ public class IPokedexTest {
     }
     @Test
     void TestCreatePokemon(){
-        //yodo
+        assertNull(pkd.createPokemon(0,0,0,0,0));
     }
 
 
@@ -98,6 +97,10 @@ public class IPokedexTest {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+    @Test
+    void TestGetSizeOfPokedex(){
+       assertEquals(0,pkd.size());
     }
 
 
