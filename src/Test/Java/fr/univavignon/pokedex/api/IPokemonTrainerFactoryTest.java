@@ -19,4 +19,12 @@ public class IPokemonTrainerFactoryTest {
         when(pokemonTrainerFactory.createTrainer("Jean",Team.MYSTIC,pokedexFactory)).thenReturn(new PokemonTrainer("Jean",Team.MYSTIC,pokedex));
         assertEquals(PokemonTrainer.class,pokemonTrainerFactory.createTrainer("Jean",Team.MYSTIC,pokedexFactory).getClass());
     }
+    @Test
+    void ReturnedTrainerIsGood(){
+        when(pokemonTrainerFactory.createTrainer("Jean",Team.MYSTIC,pokedexFactory)).thenReturn(new PokemonTrainer("Jean",Team.MYSTIC,pokedex));
+        PokemonTrainer pt = pokemonTrainerFactory.createTrainer("Jean",Team.MYSTIC,pokedexFactory);
+        assertEquals(pt.getName(),pokemonTrainerFactory.createTrainer("Jean",Team.MYSTIC,pokedexFactory).getName());
+        assertEquals(pt.getPokedex(),pokemonTrainerFactory.createTrainer("Jean",Team.MYSTIC,pokedexFactory).getPokedex());
+        assertEquals(pt.getTeam(),pokemonTrainerFactory.createTrainer("Jean",Team.MYSTIC,pokedexFactory).getTeam());
+    }
 }
