@@ -19,9 +19,11 @@ public class IPokedexTest {
     Pokemon P;
     @Mock
     IPokedex pokedex;
+    Pokedex pkd;
     @BeforeEach
     void setup(){
         P = new Pokemon(1,"",1,1,1,1,1,1,1,1);
+        pkd = new Pokedex();
     }
     @Test
     void ReturnSizeOfPokedex(){
@@ -60,19 +62,43 @@ public class IPokedexTest {
     }
     @Test
     void ReturnListPokemonOfPokedex(){
-        ArrayList<Pokemon> pokemonList = new ArrayList<Pokemon>();
-        pokemonList.add(P);
-        when(pokedex.getPokemons()).thenReturn(pokemonList);
+        ArrayList<Pokemon> pokemonList;
+        pkd.addPokemon(P);
+        pokemonList = (ArrayList<Pokemon>) pkd.getPokemons();
         assertEquals(pokemonList,pokedex.getPokemons());
 
     }
     @Test
     void ReturnSortedListPokemonOfPokedex(){
-        ArrayList<Pokemon> pokemonList = new ArrayList<Pokemon>();
-        pokemonList.add(P);
-        when(pokedex.getPokemons(PokemonComparators.NAME)).thenReturn(pokemonList);
+        ArrayList<Pokemon> pokemonList;
+        pkd.addPokemon(P);
+        pokemonList = (ArrayList<Pokemon>) pkd.getPokemons(PokemonComparators.NAME);
         assertEquals(pokemonList,pokedex.getPokemons(PokemonComparators.NAME));
 
     }
+    @Test
+    void TestGetPokemonAtIndex(){
+        pkd.addPokemon(P);
+        try {
+            assertEquals(P,pkd.getPokemon(0));
+        } catch (PokedexException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @Test
+    void TestCreatePokemon(){
+        //yodo
+    }
+
+
+    @Test
+    void TestThrowsExceptionWhenGetMetadata(){
+        try {
+            assertThrows(PokedexException.class,() -> pkd.getPokemonMetadata(999));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 
 }
