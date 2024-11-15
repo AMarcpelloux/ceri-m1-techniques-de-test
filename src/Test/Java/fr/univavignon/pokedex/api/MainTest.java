@@ -61,4 +61,8 @@ public class MainTest {
             System.out.println(e.getMessage());
         }
     }
+    @Test
+    void comparatorTest(){
+        PokemonComparators pc = pc.compare(p,p2);
+    }
 }
