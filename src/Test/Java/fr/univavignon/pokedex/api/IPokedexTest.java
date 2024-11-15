@@ -65,7 +65,7 @@ public class IPokedexTest {
         ArrayList<Pokemon> pokemonList;
         pkd.addPokemon(P);
         pokemonList = (ArrayList<Pokemon>) pkd.getPokemons();
-        assertEquals(pokemonList,pokedex.getPokemons());
+        assertEquals(pokemonList,pkd.getPokemons());
 
     }
     @Test
@@ -73,7 +73,7 @@ public class IPokedexTest {
         ArrayList<Pokemon> pokemonList;
         pkd.addPokemon(P);
         pokemonList = (ArrayList<Pokemon>) pkd.getPokemons(PokemonComparators.NAME);
-        assertEquals(pokemonList,pokedex.getPokemons(PokemonComparators.NAME));
+        assertEquals(pokemonList,pkd.getPokemons(PokemonComparators.NAME));
 
     }
     @Test
