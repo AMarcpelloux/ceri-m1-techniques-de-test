@@ -1,0 +1,23 @@
+on:
+  push
+
+jobs:
+  boc_job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: "${{ github.repository }}"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'corretto'
+          java-version: '21'
+      - name: doc
+        run: mvn -B javadoc::javadoc
+      - name: page
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.SA_MERE }}
+          publish_dir: ./public
