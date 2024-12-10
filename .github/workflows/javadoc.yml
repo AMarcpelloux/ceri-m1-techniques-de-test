@@ -8,7 +8,7 @@ jobs:
       contents: write
     steps:
       - name: doc
-        run: mvn -B javadoc::javadoc
+        run: mvn -B -f ../pom.xml javadoc::javadoc
       - name: page
         uses: peaceiris/actions-gh-pages@v4
         with:
