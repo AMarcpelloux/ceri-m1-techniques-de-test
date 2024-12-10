@@ -32,7 +32,18 @@ jobs:
           command: mvn jacoco:report
       - codecov/upload:
           file: target/site/jacoco/jacoco.xml
-
+  boc_job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: doc
+        run: mvn -B javadoc::javadoc
+      - name: page
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.SA_MERE }}
+          publish_dir: ./public
 
 #workflow maven build and test
 workflows:
@@ -40,6 +51,10 @@ workflows:
   master-branch-workflow:
     jobs:
       - build-and-test:
+          filters:
+            branches:
+              only: master
+      - boc_job:
           filters:
             branches:
               only: master
