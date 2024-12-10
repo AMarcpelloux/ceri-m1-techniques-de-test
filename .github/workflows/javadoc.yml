@@ -12,7 +12,7 @@ jobs:
           repository: "${{ github.repository }}"
       - name: doc
         run: mvn -B javadoc::javadoc
-      - name: pages
+      - name: page
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.SA_MERE }}
