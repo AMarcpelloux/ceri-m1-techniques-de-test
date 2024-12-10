@@ -7,6 +7,11 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider{
         pokemonMetadata =  new PokemonMetadata[151];
         pokemonMetadata[0] = new PokemonMetadata(0,"bob",1,1,1);
     }
+
+    /**
+     *
+     * @return the pokemommetadataprovider
+     */
     public static PokemonMetadataProvider getProvider(){
         if(pokemonMetadataProvider==null){
             pokemonMetadataProvider = new PokemonMetadataProvider();
