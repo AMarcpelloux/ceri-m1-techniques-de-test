@@ -1,6 +1,13 @@
 package fr.univavignon.pokedex.api;
 
 public class PokemonMetadataProvider implements IPokemonMetadataProvider{
+    /**
+     * Description de la méthode
+     * @param var1 description du premier paramètre
+     * @param var2 description du second paramètre
+     * @return Description de la valeur retournée
+     */
+
     static private PokemonMetadataProvider pokemonMetadataProvider;
     static private PokemonMetadata[] pokemonMetadata;
     private PokemonMetadataProvider() {

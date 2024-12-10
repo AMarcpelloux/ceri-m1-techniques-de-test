@@ -1,12 +1,7 @@
 package fr.univavignon.pokedex.api;
 
 public class PokemonFactory implements IPokemonFactory{
-    /**
-     * Description de la méthode
-     * @param index description du premier paramètre
-     * @param cp description du second paramètre
-     * @return Description de la valeur retournée
-     */
+
     @Override
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
         PokemonMetadataProvider pmp = PokemonMetadataProvider.getProvider();
