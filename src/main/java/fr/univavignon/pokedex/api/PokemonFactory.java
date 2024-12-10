@@ -3,8 +3,8 @@ package fr.univavignon.pokedex.api;
 public class PokemonFactory implements IPokemonFactory{
     /**
      * Description de la méthode
-     * @param var1 description du premier paramètre
-     * @param var2 description du second paramètre
+     * @param index description du premier paramètre
+     * @param cp description du second paramètre
      * @return Description de la valeur retournée
      */
     @Override
