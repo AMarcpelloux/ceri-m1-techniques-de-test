@@ -23,6 +23,9 @@ jobs:
       - run:
           name: Checkstyle
           command: mvn checkstyle:check
+      - run:
+          name: Checkstyle-site
+          command: mvn site
 #jacoco coverage
       - run:
           name: Generate Coverage Report
